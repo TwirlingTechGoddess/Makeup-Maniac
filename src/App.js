@@ -7,21 +7,32 @@ class App extends Component {
     super()
 
     this.state = {
-      love: ''
+      types: []
     };
   }
 
-  componentDidMount() {
-    const url = 'http://makeup-api.herokuapp.com/api/v1/products.json'
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        this.setState({
-          love: data[0].name
-        })
-      })
-      .catch(error => console.log(error.message))
+  async componentDidMount() {
+    const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?'
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      await this.storeData(data)
+    } catch(error) {
+      console.log(error.message)
+    }
+
+  }
+
+  storeData(data) {
+    const store = data.reduce((accu, cosmetic) => {
+      const type = cosmetic.product_type
+      if(!accu[type]){
+        accu[type] = [];
+      }
+      accu[type].push(cosmetic)
+      return accu
+    }, {})
+    console.log(store)
   }
 
   render() {
@@ -29,7 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>{ this.state.love }</h1>
+          <h1>{ this.state.types[0] }</h1>
         </header>
       </div>
     )
