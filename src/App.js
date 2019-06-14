@@ -12,7 +12,7 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
+  async fetchData() {
     const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?'
     try {
       const response = await fetch(url)
@@ -50,7 +50,7 @@ class App extends Component {
         <header className="App-header">
           { navigation }
         </header>
-        <Route path='/' component={Home} />
+        <Route path='/' component={Home} fetchData={this.fetchData()}/>
       </div>
     )
   }
