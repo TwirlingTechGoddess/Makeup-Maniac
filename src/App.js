@@ -46,7 +46,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>MakeUp Mania</h1>
+        <h1>MakeUp Maniac</h1>
         <header className="App-header">
           { navigation }
         </header>
