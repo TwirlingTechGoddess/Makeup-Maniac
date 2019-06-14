@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Router, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
+import Home from './Home';
 import './App.css';
 
 class App extends Component {
@@ -49,9 +50,7 @@ class App extends Component {
         <header className="App-header">
           { navigation }
         </header>
-        <body>
-
-        </body>
+        <Route path='/' component={Home} />
       </div>
     )
   }
