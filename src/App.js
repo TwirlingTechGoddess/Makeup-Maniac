@@ -7,7 +7,7 @@ class App extends Component {
     super()
 
     this.state = {
-      types: []
+      store: {}
     };
   }
 
@@ -32,15 +32,21 @@ class App extends Component {
       accu[type].push(cosmetic)
       return accu
     }, {})
-    console.log(store)
+    this.setState({
+      store: store
+    })
   }
 
   render() {
+    const types = Object.keys(this.state.store)
+    const navigation = types.map(type => {
+        return <NavLink to={"/"+type} className='nav'>{type.toUpperCase().replace('_', ' ')}</NavLink>
+    });
 
     return (
       <div className="App">
         <header className="App-header">
-          <h1>{ this.state.types[0] }</h1>
+          { navigation }
         </header>
       </div>
     )
