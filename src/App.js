@@ -14,7 +14,6 @@ class App extends Component {
 
   async fetchData(event) {
     event.preventDefault();
-    console.log('firing')
     document.querySelector('.hider').setAttribute('class', 'App-transition')
     const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?';
     try {
@@ -60,7 +59,7 @@ class App extends Component {
             <button type="submit">PRESS TO EXPLORE</button>
           </form>    
         </div>
-        <Route to='/' component={Home} />
+        <Route exact path='/' component={Home} />
       </div>
     )
   }
