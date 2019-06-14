@@ -12,16 +12,18 @@ class App extends Component {
     };
   }
 
-  async fetchData() {
-    const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?'
+  async fetchData(event) {
+    event.preventDefault();
+    console.log('firing')
+    document.querySelector('.hider').setAttribute('class', 'App-transition')
+    const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?';
     try {
       const response = await fetch(url)
       const data = await response.json()
-      await this.storeData(data)
+      this.storeData(data)
     } catch(error) {
       console.log(error.message)
     }
-
   }
 
   storeData(data) {
@@ -36,12 +38,14 @@ class App extends Component {
     this.setState({
       store: store
     })
+    document.querySelector('.App-transition').setAttribute('hidden', true)
+    document.querySelector('.Home').removeAttribute('hidden')
   }
 
   render() {
     const types = Object.keys(this.state.store)
-    const navigation = types.map(type => {
-        return <NavLink to={"/"+type} className='nav'>{type.toUpperCase().replace('_', ' ')}</NavLink>
+    const navigation = types.map((type, index) => {
+        return <NavLink to={"/"+type} key={index} className='nav'>{type.toUpperCase().replace('_', ' ')}</NavLink>
     });
 
     return (
@@ -50,7 +54,13 @@ class App extends Component {
         <header className="App-header">
           { navigation }
         </header>
-        <Route path='/' component={Home} fetchData={this.fetchData()}/>
+        <div className="hider">
+          <h2>Enjoy the most organized and comprehensive lists of the world's premiere MakeUp brands</h2>
+          <form onSubmit={this.fetchData.bind(this)}>
+            <button type="submit">PRESS TO EXPLORE</button>
+          </form>    
+        </div>
+        <Route to='/' component={Home} />
       </div>
     )
   }

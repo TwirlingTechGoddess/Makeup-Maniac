@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Home = (fetchData) => {
+const Home = () => {
   return (
-    <div>
-      <h2>Enjoy the most organized and comprehensive lists of the world's premiere MakeUp brands</h2>
-      <button onSubmit={() => fetchData()}>PRESS TO EXPLORE</button>
+    <div className='Home' hidden={true}>
+      <h2>Click on the links above to see our variety of products</h2>
     </div>
   )
 }

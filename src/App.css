@@ -22,10 +22,10 @@ a:focus {
   text-align: center;
 }
 
-/*.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.App-transition {
+  animation: App-transition-spin infinite 20s linear;
   height: 80px;
-}*/
+}
 
 .App-header {
   background-color: slategrey;
@@ -63,12 +63,18 @@ header {
   margin: auto;
   font-size: 1.5em;
 }
-/*
-@keyframes App-logo-spin {
+
+.Home {
+  width: 100vw;
+  height: 20vh;
+  background-color: red;
+}
+
+@keyframes App-transition-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}*/
+}
