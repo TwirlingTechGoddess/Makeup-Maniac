@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, NavLink } from 'react-router-dom'
+import { Router, NavLink } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -45,9 +45,13 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>MakeUp Mania</h1>
         <header className="App-header">
           { navigation }
         </header>
+        <body>
+
+        </body>
       </div>
     )
   }
