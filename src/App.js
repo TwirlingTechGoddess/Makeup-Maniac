@@ -7,9 +7,21 @@ class App extends Component {
     super()
 
     this.state = {
-      love: '',
-      hate: ''
-    }
+      love: ''
+    };
+  }
+
+  componentDidMount() {
+    const url = 'http://makeup-api.herokuapp.com/api/v1/products.json'
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({
+          love: data[0].name
+        })
+      })
+      .catch(error => console.log(error.message))
   }
 
   render() {
@@ -17,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>She workin</h1>
+          <h1>{ this.state.love }</h1>
         </header>
       </div>
     )
