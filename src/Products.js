@@ -7,7 +7,7 @@ class Products extends Component {
   }
 
   render() {
-    const displayProducts = this.props.bye.map((product, i) => 
+    const displayProducts = this.props.products.map((product, i) => 
       <ProductCard {...product} key={product.id} className='app-img'/>
     )
     return (

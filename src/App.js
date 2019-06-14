@@ -72,6 +72,7 @@ export class App extends Component {
         )
       }
     }
+
    if(!types.length) {
       return (
         <div className="App">
@@ -97,7 +98,16 @@ export class App extends Component {
             </header>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
-              <Route exact path='/blush' render={() => <Products bye={this.state.store.blush}/>}/>
+              <Route exact path='/blush' render={() => <Products products={this.state.store.blush}/>}/>
+              <Route exact path='/bronzer' render={() => <Products products={this.state.store.bronzer}/>}/>
+              <Route exact path='/eyebrow' render={() => <Products products={this.state.store.eyebrow}/>}/>
+              <Route exact path='/eyeliner' render={() => <Products products={this.state.store.eyeliner}/>}/>
+              <Route exact path='/eyeshadow' render={() => <Products products={this.state.store.eyeshadow}/>}/>
+              <Route exact path='/foundation' render={() => <Products products={this.state.store.foundation}/>}/>
+              <Route exact path='/lip_liner' render={() => <Products products={this.state.store.lip_liner}/>}/>
+              <Route exact path='/lipstick' render={() => <Products products={this.state.store.lipstick}/>}/>
+              <Route exact path='/mascara' render={() => <Products products={this.state.store.mascara}/>}/>
+              <Route exact path='/nail_polish' render={() => <Products products={this.state.store.nail_polish}/>}/>
             </Switch>
           </div>
         ) 
