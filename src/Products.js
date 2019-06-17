@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductCard from './ProductCard';
+import ThumbnailCard from './ThumbnailCard';
 
 class Products extends Component {
   constructor(props){
@@ -8,7 +8,7 @@ class Products extends Component {
 
   render() {
     const displayProducts = this.props.products.map((product, i) => 
-      <ProductCard {...product} key={product.id} className='app-img'/>
+      <ThumbnailCard {...product} key={product.id} className='app-img'/>
     )
     return (
       <div className='product-display'>
