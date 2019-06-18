@@ -64,10 +64,20 @@ export class App extends Component {
     });
     const cards = this.state.numCards
     const store = this.state.store
-    const productPath = types.map((type, index) => {
+    const productPaths = types.map((type, index) => {
       return (
         <Route exact path={'/'+type} render={() => <Products key={index} numCards={cards} products={store[type]}/>}/>
       )
+    })
+    const itemPaths = types.map((type, index) => {
+      return (
+        <Route path={`/${type}/:id`} render={({ match }) => {
+          const product = store[type].find(item => item.id === parseInt(match.params.id))
+          if (product) {
+            return <ProductCard {...product} />
+          }
+        }} /> 
+      )     
     })
 
    if(!types.length) {
@@ -95,8 +105,9 @@ export class App extends Component {
             </header>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
-              {productPath}
+              {productPaths}
             </Switch>
+            {itemPaths}
           </div>
         ) 
     }
