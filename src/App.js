@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import ThumbnailCard from './ThumbnailCard';
 import ProductCard from './ProductCard';
 import Products from './Products';
 import Home from './Home';
@@ -11,7 +10,7 @@ export class App extends Component {
     super()
     this.state = {
       store: {},
-      test:[]
+      numCards: 10
     };
   }
 
@@ -44,34 +43,27 @@ export class App extends Component {
     document.querySelector('.Home').removeAttribute('hidden')
   }
 
-  exportStore() {
-    return this.state
+  updateState() {
+    this.setState({
+      isNew: true,
+      numCards: 10
+    })
   }
 
   render() {
-    var types = Object.keys(this.state.store)
+    const types = Object.keys(this.state.store)
     const navigation = types.map((type, index) => {
       return (
-        <NavLink to={"/"+type} key={index} className='nav'>
+        <NavLink to={"/"+type} 
+                 key={index} 
+                 className='nav'
+                 onClick={this.updateState.bind(this)}>
           {type.toUpperCase().replace('_', ' ')}
         </NavLink>
       )
     });
-    const productContainer = (type) => {
-      if(types.length) {
-        const temp = this.state.store[`${type}`]
-        const displayProducts = temp.map((product, i) => 
-          console.log(product)
-          // <ThumbnailCard {...product} key={product.name + i} className='app-img'/>
-        )
-        return (
-          <div className='image-display'>
-            <h1>{type.toUpperCase().replace('_', ' ')}!</h1>
-            {displayProducts}
-          </div>
-        )
-      }
-    }
+    const cards = this.state.numCards
+    const store = this.state.store
 
    if(!types.length) {
       return (
@@ -98,16 +90,16 @@ export class App extends Component {
             </header>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
-              <Route exact path='/blush' render={() => <Products products={this.state.store.blush}/>}/>
-              <Route exact path='/bronzer' render={() => <Products products={this.state.store.bronzer}/>}/>
-              <Route exact path='/eyebrow' render={() => <Products products={this.state.store.eyebrow}/>}/>
-              <Route exact path='/eyeliner' render={() => <Products products={this.state.store.eyeliner}/>}/>
-              <Route exact path='/eyeshadow' render={() => <Products products={this.state.store.eyeshadow}/>}/>
-              <Route exact path='/foundation' render={() => <Products products={this.state.store.foundation}/>}/>
-              <Route exact path='/lip_liner' render={() => <Products products={this.state.store.lip_liner}/>}/>
-              <Route exact path='/lipstick' render={() => <Products products={this.state.store.lipstick}/>}/>
-              <Route exact path='/mascara' render={() => <Products products={this.state.store.mascara}/>}/>
-              <Route exact path='/nail_polish' render={() => <Products products={this.state.store.nail_polish}/>}/>
+              <Route exact path='/blush' render={() => <Products numCards={cards} products={store.blush}/>}/>
+              <Route exact path='/bronzer' render={() => <Products numCards={cards} products={store.bronzer}/>}/>
+              <Route exact path='/eyebrow' render={() => <Products numCards={cards} products={store.eyebrow}/>}/>
+              <Route exact path='/eyeliner' render={() => <Products numCards={cards} products={store.eyeliner}/>}/>
+              <Route exact path='/eyeshadow' render={() => <Products numCards={cards} products={store.eyeshadow}/>}/>
+              <Route exact path='/foundation' render={() => <Products numCards={cards} products={store.foundation}/>}/>
+              <Route exact path='/lip_liner' render={() => <Products numCards={cards} products={store.lip_liner}/>}/>
+              <Route exact path='/lipstick' render={() => <Products numCards={cards} products={store.lipstick}/>}/>
+              <Route exact path='/mascara' render={() => <Products numCards={cards} products={store.mascara}/>}/>
+              <Route exact path='/nail_polish' render={() => <Products numCards={cards} products={store.nail_polish}/>}/>
             </Switch>
           </div>
         ) 
@@ -115,4 +107,4 @@ export class App extends Component {
   }
 }
 
-export default  App 
+export default App 

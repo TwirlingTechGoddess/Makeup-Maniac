@@ -5,22 +5,34 @@ class Products extends Component {
   constructor(props){
     super(props)
     this.state = {
-      numCards: 10
+      numCards: this.props.numCards
     }
   }
 
-  addCards(event) {
+  editNumCards(event) {
     event.preventDefault();
-    this.setState({
-      numCards: this.state.numCards + 10
-    })
+    let name = event.target.name
+    let cards = this.state.numCards
+    if(name === 'less' && cards > 10) {
+      this.setState({
+        numCards: cards - 10
+      })    
+    } 
+    if(name ==='more' && cards < this.props.products.length) {
+      this.setState({
+        numCards: cards + 10
+      })
+    }
   }
 
   render() {
-    
+
     const displayProducts = this.props.products.reduce((accu, product, i) => {
-      const thumbnail = <ThumbnailCard {...product} key={product.id} className='app-img'/>
-      if(i < this.state.numCards){
+      const cards = this.state.numCards
+      const thumbnail = <ThumbnailCard {...product} 
+                                       key={product.id} 
+                                       className='app-img'/>
+      if(i < cards){
         return [...accu, thumbnail]
       }
       return accu
@@ -28,10 +40,15 @@ class Products extends Component {
 
     return (
       <div className='product-display'>
-        {displayProducts}
-        <form onSubmit={this.addCards.bind(this)}>
+        <form onSubmit={this.editNumCards.bind(this)}
+              name='less'>
+          <button>Less</button>
+        </form>
+        <form onSubmit={this.editNumCards.bind(this)}
+              name='more'>
           <button>More</button>
         </form>
+        {displayProducts}
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ThumbnailCard = ({ brand, name, description, image_link, id, product_type }) => {
+const ThumbnailCard = ({ brand, name, image_link, id, product_type }) => {
 
   return (
     <Link to={`${product_type}/${id}`}
