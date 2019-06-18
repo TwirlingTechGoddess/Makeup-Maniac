@@ -64,6 +64,11 @@ export class App extends Component {
     });
     const cards = this.state.numCards
     const store = this.state.store
+    const productPath = types.map((type, index) => {
+      return (
+        <Route exact path={'/'+type} render={() => <Products key={index} numCards={cards} products={store[type]}/>}/>
+      )
+    })
 
    if(!types.length) {
       return (
@@ -90,16 +95,7 @@ export class App extends Component {
             </header>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
-              <Route exact path='/blush' render={() => <Products numCards={cards} products={store.blush}/>}/>
-              <Route exact path='/bronzer' render={() => <Products numCards={cards} products={store.bronzer}/>}/>
-              <Route exact path='/eyebrow' render={() => <Products numCards={cards} products={store.eyebrow}/>}/>
-              <Route exact path='/eyeliner' render={() => <Products numCards={cards} products={store.eyeliner}/>}/>
-              <Route exact path='/eyeshadow' render={() => <Products numCards={cards} products={store.eyeshadow}/>}/>
-              <Route exact path='/foundation' render={() => <Products numCards={cards} products={store.foundation}/>}/>
-              <Route exact path='/lip_liner' render={() => <Products numCards={cards} products={store.lip_liner}/>}/>
-              <Route exact path='/lipstick' render={() => <Products numCards={cards} products={store.lipstick}/>}/>
-              <Route exact path='/mascara' render={() => <Products numCards={cards} products={store.mascara}/>}/>
-              <Route exact path='/nail_polish' render={() => <Products numCards={cards} products={store.nail_polish}/>}/>
+              {productPath}
             </Switch>
           </div>
         ) 
