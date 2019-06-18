@@ -9,7 +9,12 @@ class Products extends Component {
     }
   }
 
-
+  addCards(event) {
+    event.preventDefault();
+    this.setState({
+      numCards: this.state.numCards + 10
+    })
+  }
 
   render() {
     
@@ -24,7 +29,9 @@ class Products extends Component {
     return (
       <div className='product-display'>
         {displayProducts}
-
+        <form onSubmit={this.addCards.bind(this)}>
+          <button>More</button>
+        </form>
       </div>
     )
   }
