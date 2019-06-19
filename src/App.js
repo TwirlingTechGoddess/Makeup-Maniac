@@ -85,9 +85,10 @@ export class App extends Component {
     });
     const cards = this.state.numCards
     const store = this.state.store
+    const search = this.state.searchedProducts
     const productPaths = types.map((type, index) => {
       return (
-        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={store[type]}/>}/>
+        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={search ? search : store[type]}/>}/>
       )
     })
     const itemPaths = types.map((type, index) => {
