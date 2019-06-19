@@ -15,6 +15,7 @@ class Search extends Component {
     this.setState({
       value
     })
+    this.props.filterProducts(this.state.value)
   }
 
   render() {

@@ -11,7 +11,7 @@ export class App extends Component {
     super()
     this.state = {
       store: {},
-      numCards: 10
+      numCards: 10,
     };
   }
 
@@ -44,11 +44,30 @@ export class App extends Component {
     document.querySelector('.Home').removeAttribute('hidden')
   }
 
-  updateState() {
+  updateState(event) {
     this.setState({
       isNew: true,
-      numCards: 10
+      numCards: 10,
+      typeDisplayed: event.target.name
     })
+  }
+
+  filterProducts(string) {
+    const str = string.toLowerCase()
+    const state = this.state
+    const results = state.store[state.typeDisplayed].reduce((accu, item, index) => {
+      const newTags = item['tag_list'].filter(word => word.toLowerCase().includes(str))
+      const newColors = item['product_colors'].filter(color => color['colour_name'].toLowerCase().includes(str))
+      const nameCase = item['name'].toLowerCase().includes(str)
+      console.log(item['brand'], index)
+      const brandCase = item['brand'].toLowerCase().includes(str)
+      console.log(newTags, newColors, nameCase, brandCase, {'maxArrayLength': null})
+      if(newTags.length || newColors.length || nameCase || brandCase) {
+        return [...accu, item] 
+      }
+      return accu
+    }, [])
+    this.setState({searchedProducts: results})
   }
 
   render() {
@@ -58,6 +77,7 @@ export class App extends Component {
         <NavLink to={"/"+type} 
                  key={index} 
                  className='nav'
+                 name={type}
                  onClick={this.updateState.bind(this)}>
           {type.toUpperCase().replace('_', ' ')}
         </NavLink>
@@ -67,12 +87,12 @@ export class App extends Component {
     const store = this.state.store
     const productPaths = types.map((type, index) => {
       return (
-        <Route exact path={'/'+type} render={() => <Products key={index} numCards={cards} products={store[type]}/>}/>
+        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={store[type]}/>}/>
       )
     })
     const itemPaths = types.map((type, index) => {
       return (
-        <Route path={`/${type}/:id`} render={({ match }) => {
+        <Route path={`/${type}/:id`} key={index} render={({ match }) => {
           const product = store[type].find(item => item.id === parseInt(match.params.id))
           if (product) {
             return <ProductCard {...product} />
@@ -104,7 +124,7 @@ export class App extends Component {
             <header className="App-header">
               { navigation }
             </header>
-            <Search />
+            <Search filterProducts={this.filterProducts.bind(this)}/>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
               {productPaths}
