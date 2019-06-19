@@ -9,16 +9,23 @@ class Search extends Component {
     }
   }
 
-  handleChange() {
-    
+  handleChange(event) {
+    event.preventDefault()
+    const value = event.target.value
+    this.setState({
+      value
+    })
   }
 
   render() {
 
     return(
       <div>
-        <form onChange={this.handleChange}>
-          <input type='search' placeholder='Search for brands or keywords' />
+        <form>
+          <input type='search' 
+                 placeholder='Search for brands or keywords' 
+                 value={this.state.value} 
+                 onChange={this.handleChange.bind(this)}/>
         </form>
       </div>
     )

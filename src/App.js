@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import Products from './Products';
+import Search from './Search';
 import Home from './Home';
 import './App.css';
 
@@ -103,6 +104,7 @@ export class App extends Component {
             <header className="App-header">
               { navigation }
             </header>
+            <Search />
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
               {productPaths}
