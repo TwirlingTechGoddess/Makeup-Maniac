@@ -90,7 +90,7 @@ export class App extends Component {
         <Route path={`/${type}/:id`} key={index} render={({ match }) => {
           const product = store[type].find(item => item.id === parseInt(match.params.id))
           if (product) {
-            return <ProductCard {...product} />
+            return <ProductCard {...product}/>
           }
         }} /> 
       )     
