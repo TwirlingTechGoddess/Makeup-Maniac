@@ -23,24 +23,16 @@ export class App extends Component {
     try {
       const response = await fetch(url)
       const data = await response.json()
-      cleanData(data)
-      this.storeData(data).bind(this)
+      const cleanedData = cleanData(data)
+      this.storeData(cleanedData).bind(this)
     } catch(error) {
       console.log(error.message)
     }
   }
 
   storeData(data) {
-    const store = data.reduce((accu, cosmetic) => {
-      const type = cosmetic.product_type
-      if(!accu[type]){
-        accu[type] = [];
-      }
-      accu[type].push(cosmetic)
-      return accu
-    }, {})
     this.setState({
-      store: store
+      store: data
     })
     document.querySelector('.App-transition').setAttribute('hidden', true)
     document.querySelector('.Home').removeAttribute('hidden')
