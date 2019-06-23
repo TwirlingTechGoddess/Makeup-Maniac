@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import Products from './Products';
+import { cleanData } from './helper'
 import Search from './Search';
 import Home from './Home';
 import './App.css';
@@ -22,6 +23,7 @@ export class App extends Component {
     try {
       const response = await fetch(url)
       const data = await response.json()
+      cleanData(data)
       this.storeData(data).bind(this)
     } catch(error) {
       console.log(error.message)
