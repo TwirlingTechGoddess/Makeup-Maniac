@@ -39,6 +39,7 @@ export class App extends Component {
   }
 
   updateState(event) {
+    console.log('hit it')
     this.setState({
       isNew: true,
       numCards: 10,
@@ -48,14 +49,17 @@ export class App extends Component {
 
   filterProducts(string) {
     const str = string.toLowerCase()
-    const state = this.state
-    const results = state.store[state.typeDisplayed].reduce((accu, item, index) => {
-      const newTags = item['tag_list'].filter(word => word.toLowerCase().includes(str))
-      const newColors = item['product_colors'].filter(color => color['colour_name'].toLowerCase().includes(str))
+    const results = this.state.store[this.state.typeDisplayed].reduce((accu, item, index) => {
+      const newTags = item.tags.filter(word => word.toLowerCase().includes(str))
+      const newColors = item.colors.filter(color => {
+        console.log(color, color.colour_name)
+        if(color.colour_name){
+          return color.colour_name.toLowerCase().includes(str)
+        }
+        return color
+      })
       const nameCase = item['name'].toLowerCase().includes(str)
-      console.log(item['brand'], index)
       const brandCase = item['brand'].toLowerCase().includes(str)
-      console.log(newTags, newColors, nameCase, brandCase, {'maxArrayLength': null})
       if(newTags.length || newColors.length || nameCase || brandCase) {
         return [...accu, item] 
       }
