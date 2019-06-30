@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Didact Gothic', sans-serif;
 }
 
 /*
@@ -11,15 +12,54 @@ purple  #841983
 
 a {
   text-decoration: none;
+  border-radius: 6rem 6rem;
+  letter-spacing: .1rem;
+}
+
+a:hover {
+  text-shadow: .51rem .51rem 1rem slategrey;
 }
 
 a:focus {
   text-decoration: none;
-  color: #A4D555;
 }
 
 .App {
   text-align: center;
+}
+
+h1 {
+  font-family: 'Antic Didone', serif;
+  font-size: 5rem;
+  font-weight: inherit;
+  display: inline;
+}
+
+h1 span {
+  font-size: 6rem;
+  /*font-weight: bolder;*/
+}
+
+.ProductCard {
+  width: 80%;
+  letter-spacing: .15rem;
+  margin: auto;
+}
+
+.ProductCard div{
+  margin-top: 4rem;
+}
+.ProductCard div h3{
+  margin: 3rem 0 -1.5rem 0;
+}
+
+.back-btn {
+  font-weight: bolder;
+  font-size: 1.25rem;
+}
+
+.maniac {
+  color: orange;
 }
 
 .App-transition {
@@ -28,11 +68,11 @@ a:focus {
 }
 
 .App-header {
-  background-color: slategrey;
+  background-color: #fee2f8;
+  background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
   width: 98vw;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  height: 5rem;
+  padding: .5rem;
 }
 
 /*.App-intro {
@@ -40,17 +80,16 @@ a:focus {
 }*/
 
 .nav {
-  width: 9%
+  width: 8%;
 }
 
 .active {
   /*background-color: #FF5992;*/
-  background-color: #841983;
   height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #A4D555
+  color: orange;
 }
 
 header {
@@ -61,7 +100,7 @@ header {
   width: 60%;
   align-items: center;
   margin: auto;
-  font-size: 1.5em;
+  font-size: 1.35rem;
 }
 
 .Home {
@@ -70,8 +109,55 @@ header {
   background-color: red;
 }
 
-.Thumbnail img {
-  width: 20%;
+.product-display {
+  width: 100%
+}
+
+.product-description {
+  width: 80%;
+  margin: auto;
+}
+
+.colorChart {
+  display: inline-block;
+  width: 15%;
+
+}
+
+.ThumbnailCard {
+  display: inline-block;
+  width: 15%;
+  height: 20rem;
+  margin: auto 2rem;
+}
+
+.ThumbnailCard img {
+  width: 20rem;
+}
+
+.Thumbnail {
+  color: black;
+  /*text-shadow: .17rem .09rem 0 purple;*/
+  letter-spacing: .15rem;
+}
+
+.Search {
+  width: 50%;
+  height: 2rem;
+  box-shadow: .1rem .1rem 1rem .01rem orange;
+  border-radius: 6rem 6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-style: normal;
+  margin: 1rem 0;
+  letter-spacing: .15rem;
+  opacity: .4;
+}
+
+.Search:focus {
+  text-decoration: none;
+  outline: none;
+  opacity: .8;
 }
 
 @keyframes App-transition-spin {

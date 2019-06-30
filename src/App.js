@@ -13,6 +13,9 @@ export class App extends Component {
     this.state = {
       store: {},
       numCards: 10,
+      searchedProducts: [],
+      typeDisplayed: ''
+
     };
   }
 
@@ -52,7 +55,6 @@ export class App extends Component {
     const results = this.state.store[this.state.typeDisplayed].reduce((accu, item, index) => {
       const newTags = item.tags.filter(word => word.toLowerCase().includes(str))
       const newColors = item.colors.filter(color => {
-        console.log(color, color.colour_name)
         if(color.colour_name){
           return color.colour_name.toLowerCase().includes(str)
         }
@@ -65,7 +67,10 @@ export class App extends Component {
       }
       return accu
     }, [])
-    this.setState({searchedProducts: results})
+    this.setState({
+      searchedProducts: results
+    })
+    return 
   }
 
   render() {
@@ -86,9 +91,10 @@ export class App extends Component {
     const search = this.state.searchedProducts
     const productPaths = types.map((type, index) => {
       return (
-        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={search ? search : store[type]}/>}/>
+        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={search.length>0 ? search : store[type]}/>}/>
       )
     })
+    // const searchPath = <Route exact path={'/search'} key='search' render={() => <Products numCards={cards} products={search.length>0 ? search : store[this.state.typeDisplayed]}/>}/>
     const itemPaths = types.map((type, index) => {
       return (
         <Route path={`/${type}/:id`} key={index} render={({ match }) => {
@@ -103,7 +109,7 @@ export class App extends Component {
    if(!types.length) {
       return (
         <div className="App">
-          <h1>MakeUp Maniac</h1>
+          <h1><span>m</span>ake<span>u</span>p</h1> <h1 className='maniac'><span>m</span>aniac</h1>
           <header className="App-header">
             { navigation }
           </header>
@@ -119,11 +125,12 @@ export class App extends Component {
     } else {
         return (
           <div className="App">
-            <h1>MakeUp Maniac</h1>
+          <h1><span>m</span>ake<span>u</span>p</h1> <h1 className='maniac'><span>m</span>aniac</h1>
             <header className="App-header">
               { navigation }
             </header>
-            <Search filterProducts={this.filterProducts.bind(this)}/>
+            <Search filterProducts={this.filterProducts.bind(this)}
+                    updateState = {this.updateState.bind(this)}/>
             <Switch>
               <Route exact path='/' component={Home} className='Home'/>
               {productPaths}
