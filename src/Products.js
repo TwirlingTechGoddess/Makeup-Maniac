@@ -41,14 +41,16 @@ class Products extends Component {
     return (
       <div className='product-display'>
         {displayProducts}
-        <form onSubmit={this.editNumCards.bind(this)}
-              name='less'>
-          <button>Less</button>
-        </form>
-        <form onSubmit={this.editNumCards.bind(this)}
-              name='more'>
-          <button>More</button>
-        </form>
+        <div className='button-box'>
+          <form onSubmit={this.editNumCards.bind(this)}
+                name='less'>
+            <button>Less</button>
+          </form>
+          <form onSubmit={this.editNumCards.bind(this)}
+                name='more'>
+            <button>More</button>
+          </form>
+          </div>
       </div>
     )
   }

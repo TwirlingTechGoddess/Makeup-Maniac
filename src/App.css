@@ -3,12 +3,71 @@
   font-family: 'Didact Gothic', sans-serif;
 }
 
-/*
-blue:   #4CDEF5
-green:  #A4D555
-pink:   #FF5992
-purple  #841983
-*/
+header {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+  align-items: center;
+  margin: auto;
+  font-size: 1.35rem;
+}
+
+.App-header {
+  background-color: #fee2f8;
+  background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
+  width: 98vw;
+  height: 5rem;
+  padding: .5rem;
+}
+
+.hider {
+  margin-top: 13rem;
+  font-size: x-large;
+}
+
+button {
+  width: 15rem;
+  height: 4rem;
+  color: orange;
+  background-color: purple;
+  border-radius: 6rem 6rem;
+  font-size: 1.22rem;
+}
+
+h1 {
+  font-family: 'Antic Didone', serif;
+  font-size: 5rem;
+  font-weight: inherit;
+  display: inline;
+}
+
+h1 span {
+  font-size: 6rem;
+}
+
+.maniac {
+  color: orange;
+}
+
+.App-transition {
+  height: 50rem;
+  width: 50rem;
+  background-image:  url('https://cdn.dribbble.com/users/255512/screenshots/2215917/animation.gif');
+  -webkit-mask-image:-webkit-gradient(linear, center, center, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  background-repeat: no-repeat;
+  border-radius: 100rem 100rem 100rem 100rem;
+  margin: 2rem auto -2rem auto;
+  background-size: contain;
+
+}
+
+.nav {
+  width: 8%;
+  font-size: 80%;
+}
 
 a {
   text-decoration: none;
@@ -24,121 +83,12 @@ a:focus {
   text-decoration: none;
 }
 
-.App {
-  text-align: center;
-}
-
-h1 {
-  font-family: 'Antic Didone', serif;
-  font-size: 5rem;
-  font-weight: inherit;
-  display: inline;
-}
-
-h1 span {
-  font-size: 6rem;
-  /*font-weight: bolder;*/
-}
-
-.ProductCard {
-  width: 80%;
-  letter-spacing: .15rem;
-  margin: auto;
-}
-
-.ProductCard div{
-  margin-top: 4rem;
-}
-.ProductCard div h3{
-  margin: 3rem 0 -1.5rem 0;
-}
-
-.back-btn {
-  font-weight: bolder;
-  font-size: 1.25rem;
-}
-
-.maniac {
-  color: orange;
-}
-
-.App-transition {
-  animation: App-transition-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #fee2f8;
-  background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
-  width: 98vw;
-  height: 5rem;
-  padding: .5rem;
-}
-
-/*.App-intro {
-  font-size: large;
-}*/
-
-.nav {
-  width: 8%;
-}
-
 .active {
-  /*background-color: #FF5992;*/
   height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: orange;
-}
-
-header {
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 60%;
-  align-items: center;
-  margin: auto;
-  font-size: 1.35rem;
-}
-
-.Home {
-  width: 100vw;
-  height: 20vh;
-  background-color: red;
-}
-
-.product-display {
-  width: 100%
-}
-
-.product-description {
-  width: 80%;
-  margin: auto;
-}
-
-.colorChart {
-  display: inline-block;
-  width: 15%;
-
-}
-
-.ThumbnailCard {
-  display: inline-block;
-  width: 15%;
-  height: 20rem;
-  margin: auto 2rem;
-}
-
-.ThumbnailCard img {
-  width: 20rem;
-}
-
-.Thumbnail {
-  color: black;
-  /*text-shadow: .17rem .09rem 0 purple;*/
-  letter-spacing: .15rem;
 }
 
 .Search {
@@ -160,11 +110,67 @@ header {
   opacity: .8;
 }
 
-@keyframes App-transition-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Home {
+  width: 100vw;
+  height: 20vh;
+  background-color: red;
+}
+
+.ThumbnailCard {
+  display: inline-block;
+  width: 15%;
+  height: 20rem;
+  margin: auto 2rem;
+}
+
+.ThumbnailCard img {
+  width: 20rem;
+}
+
+.Thumbnail {
+  color: black;
+  letter-spacing: .15rem;
+}
+
+.product-display {
+  width: 100%
+}
+
+.product-display .button-box {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.ProductCard {
+  width: 80%;
+  letter-spacing: .15rem;
+  margin: auto;
+}
+
+.ProductCard img {
+  width: 50%;
+}
+
+.ProductCard div{
+  margin-top: 4rem;
+}
+
+.ProductCard div h3{
+  margin: 3rem 0 -1.5rem 0;
+}
+
+.back-btn {
+  font-weight: bolder;
+  font-size: 1.35rem;
+}
+
+.product-description {
+  width: 80%;
+  margin: auto;
+}
+
+.colorChart {
+  display: inline-block;
+  width: 15%;
+
 }

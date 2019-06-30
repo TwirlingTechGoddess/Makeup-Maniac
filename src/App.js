@@ -22,6 +22,7 @@ export class App extends Component {
   async fetchData(event) {
     event.preventDefault();
     document.querySelector('.hider').setAttribute('class', 'App-transition')
+    document.querySelector('.intro').setAttribute('hidden', true)
     const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?';
     try {
       const response = await fetch(url)
@@ -114,10 +115,12 @@ export class App extends Component {
             { navigation }
           </header>
           <div className="hider">
-            <h2>Enjoy the most organized and comprehensive lists of the world's premiere MakeUp brands</h2>
-            <form onSubmit={this.fetchData.bind(this)}>
-              <button type="submit">PRESS TO EXPLORE</button>
-            </form>    
+            <div className="intro">
+              <h2>Enjoy the most organized and comprehensive lists of the world's premiere MakeUp brands</h2>
+              <form onSubmit={this.fetchData.bind(this)}>
+                <button type="submit">PRESS TO EXPLORE</button>
+              </form>    
+            </div>
           </div>
         </div>
       )
