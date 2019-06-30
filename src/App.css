@@ -28,12 +28,20 @@ header {
 }
 
 button {
-  width: 15rem;
-  height: 4rem;
-  color: orange;
-  background-color: purple;
+  color: purple;
+  box-shadow: .1rem .1rem 1rem .01rem orange;
+  background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
+  background-color: #f8e5f6;
   border-radius: 6rem 6rem;
   font-size: 1.22rem;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+}
+
+.intro button {
+  width: 15rem;
+  height: 4rem;
 }
 
 h1 {
@@ -93,7 +101,7 @@ a:focus {
 
 .Search {
   width: 50%;
-  height: 2rem;
+  height: 2.5rem;
   box-shadow: .1rem .1rem 1rem .01rem orange;
   border-radius: 6rem 6rem;
   font-size: 1.5rem;
@@ -110,11 +118,6 @@ a:focus {
   opacity: .8;
 }
 
-.Home {
-  width: 100vw;
-  height: 20vh;
-  background-color: red;
-}
 
 .ThumbnailCard {
   display: inline-block;
@@ -133,13 +136,20 @@ a:focus {
 }
 
 .product-display {
-  width: 100%
+  width: 100%;
 }
 
-.product-display .button-box {
+.button-box {
   display: flex;
-  margin-bottom: 2rem;
-  margin: auto;
+  height: 4rem;
+  width: 100%;
+  margin: 2rem auto;
+  justify-content: center;
+}
+
+.button-box button {
+  height: 3.5rem;
+  width: 10rem;
 }
 
 .ProductCard {
@@ -173,5 +183,4 @@ a:focus {
 .colorChart {
   display: inline-block;
   width: 15%;
-
 }

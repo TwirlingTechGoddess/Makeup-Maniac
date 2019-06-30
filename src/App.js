@@ -4,7 +4,6 @@ import ProductCard from './ProductCard';
 import Products from './Products';
 import { cleanData } from './helper'
 import Search from './Search';
-import Home from './Home';
 import './App.css';
 
 export class App extends Component {
