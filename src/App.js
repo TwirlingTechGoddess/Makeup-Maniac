@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import Products from './Products';
 import { cleanData } from './helper'
@@ -14,7 +14,7 @@ export class App extends Component {
       store: {},
       numCards: 10,
       searchedProducts: [],
-      typeDisplayed: ''
+      typeDisplayed: 'lipstick'
 
     };
   }
@@ -95,7 +95,7 @@ export class App extends Component {
         <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={search.length>0 ? search : store[type]}/>}/>
       )
     })
-    // const searchPath = <Route exact path={'/search'} key='search' render={() => <Products numCards={cards} products={search.length>0 ? search : store[this.state.typeDisplayed]}/>}/>
+    const searchPath = <Route exact path={'/search'} key='search' render={() => <Products numCards={cards} products={search.length>0 ? search : store[this.state.typeDisplayed]}/>}/>
     const itemPaths = types.map((type, index) => {
       return (
         <Route path={`/${type}/:id`} key={index} render={({ match }) => {
@@ -135,7 +135,9 @@ export class App extends Component {
             <Search filterProducts={this.filterProducts.bind(this)}
                     updateState = {this.updateState.bind(this)}/>
             <Switch>
-              <Route exact path='/' component={Home} className='Home'/>
+              <Route exact path='/' render={() => 
+                <Redirect to='/lipstick'/>
+              }/>
               {productPaths}
             </Switch>
             {itemPaths}

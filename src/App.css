@@ -139,6 +139,7 @@ a:focus {
 .product-display .button-box {
   display: flex;
   margin-bottom: 2rem;
+  margin: auto;
 }
 
 .ProductCard {
