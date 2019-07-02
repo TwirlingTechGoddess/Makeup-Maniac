@@ -91,17 +91,27 @@ export class App extends Component {
     const search = this.state.searchedProducts
     const productPaths = types.map((type, index) => {
       return (
-        <Route exact path={'/'+type} key={index} render={() => <Products numCards={cards} products={search.length>0 ? search : store[type]}/>}/>
+        <Route exact path={'/'+type} 
+               key={index} 
+               render={() => <Products 
+                  numCards={cards} 
+                  products={search.length>0 ? search : store[type]}/>}/>
       )
     })
-    const searchPath = <Route exact path={'/search'} key='search' render={() => <Products numCards={cards} products={search.length>0 ? search : store[this.state.typeDisplayed]}/>}/>
+    const searchPath = <Route exact path={'/search'} 
+                              key='search' 
+                              render={() => <Products 
+                                numCards={cards} 
+                                products={search.length>0 ? search : store[this.state.typeDisplayed]}/>}/>
     const itemPaths = types.map((type, index) => {
       return (
-        <Route path={`/${type}/:id`} key={index} render={({ match }) => {
-          const product = store[type].find(item => item.id === parseInt(match.params.id))
-          if (product) {
-            return <ProductCard {...product}/>
-          }
+        <Route path={`/${type}/:id`} 
+               key={index} 
+               render={({ match }) => {
+                const product = store[type].find(item => item.id === parseInt(match.params.id))
+                if (product) {
+                  return <ProductCard {...product}/>
+                }
         }} /> 
       )     
     })
@@ -109,7 +119,7 @@ export class App extends Component {
    if(!types.length) {
       return (
         <div className="App">
-          <h1><span>m</span>ake<span>u</span>p</h1> <h1 className='maniac'><span>m</span>aniac</h1>
+          <h1><span>m</span>ake<span>u</span>p</h1><h1 className='maniac'><span>m</span>aniac</h1>
           <header className="App-header">
             { navigation }
           </header>
@@ -126,7 +136,7 @@ export class App extends Component {
 
     } else {
         return (
-          <div className="App">
+          <div  className="App">
           <h1><span>m</span>ake<span>u</span>p</h1> <h1 className='maniac'><span>m</span>aniac</h1>
             <header className="App-header">
               { navigation }
@@ -134,8 +144,9 @@ export class App extends Component {
             <Search filterProducts={this.filterProducts.bind(this)}
                     updateState = {this.updateState.bind(this)}/>
             <Switch>
-              <Route exact path='/' render={() => 
-                <Redirect to='/lipstick'/>
+              <Route exact path='/' 
+                     render={() => <Redirect 
+                        to='/lipstick'/>
               }/>
               {productPaths}
             </Switch>

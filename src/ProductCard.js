@@ -18,7 +18,8 @@ const ProductCard = ({ id, name, brand, image, description, type, colors,tags })
 
     return (
       <div className='ProductCard'>
-        <Link to={`/${type}`} className='back-btn'>◀ back</Link>
+        <Link to={`/${type}`} 
+              className='back-btn'>◀ back</Link>
         <h2>{name}</h2>
         <h3>by {brand}</h3>
         <img src={image} 

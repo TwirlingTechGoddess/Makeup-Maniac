@@ -16,26 +16,20 @@ class Search extends Component {
     this.setState({
       value: event.target.value
     })
-    this.props.filterProducts(this.state.value + ' ')
+    this.props.filterProducts(this.state.value)
   }
 
   render() {
-    const searchNav = 
-    // <NavLink to='/search' 
-    //                            key='search' 
-    //                            className='nav'>
-                        <form>
-                          <input className='Search'
-                                 type='search' 
-                                 placeholder='search for brands or keywords' 
-                                 value={this.state.value}
-                                 onChange={this.handleChange.bind(this)}/>
-                        </form>
-                      // </NavLink>
 
     return(
       <div>
-        {searchNav}
+        <form>
+          <input className='Search'
+                 type='search' 
+                 placeholder='search for brands or keywords' 
+                 value={this.state.value}
+                 onChange={this.handleChange.bind(this)}/>
+        </form>
       </div>
     )
   }
