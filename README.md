@@ -3,6 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Spec:
 
+Select any publicly accessible api ([some possible options](https://github.com/public-apis/public-apis) and create a small react application that:
+
 1. On startup describes the type of a data a user will receive, along with a button, which when clicked calls to the api, and displays the data on screen, replacing the description text with a table or list type view.
 2. Allow a user to request more items somehow. This should add to the current list, rather than replacing it
 3. Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this).
