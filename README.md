@@ -6,9 +6,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Select any publicly accessible api ([some possible options](https://github.com/public-apis/public-apis) and create a small react application that:
 
 1. On startup describes the type of a data a user will receive, along with a button, which when clicked calls to the api, and displays the data on screen, replacing the description text with a table or list type view.
+![landing](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/main.png "landing")
+
 2. Allow a user to request more items somehow. This should add to the current list, rather than replacing it
+![buttons](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/buttons.png "buttons")
+
 3. Add an input somewhere that, as a user types into it, filters the currently showing results (no need to fetch things based on this).
+![filter](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/filter.png "filter")
+
 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
+![widget](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/widget.png "widget")widget
 
 Please DO NOT use any api wrapping libraries, http libraries or state management tooling. Use fetch for http access and React component state/context for managing state.
 
@@ -24,7 +31,7 @@ We're only going to use the most recent version of chrome for reviewing this, an
 
 Once you 'cd' into the project directory, you can run:
 
-### `npm start`
+```npm start```
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -32,12 +39,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+```cd Makeup-Maniac```
+
+```npm test```
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+```npm run build```
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -47,7 +56,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+```npm run eject```
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
