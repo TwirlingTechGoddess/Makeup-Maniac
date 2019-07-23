@@ -15,7 +15,7 @@ Select any publicly accessible api ([some possible options](https://github.com/p
 ![filter](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/filter.png "filter")
 
 4. When clicking on an item in this list or table view, navigate to an item specific view that shows a bit more detail.
-![widget](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/widget.png "widget")widget
+![widget](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/widget.png "widget")
 
 Please DO NOT use any api wrapping libraries, http libraries or state management tooling. Use fetch for http access and React component state/context for managing state.
 
