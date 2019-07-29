@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Spec:
 
-Select any publicly accessible api ([some possible options](https://github.com/public-apis/public-apis) and create a small react application that:
+Select any publicly accessible api ([some possible options](https://github.com/public-apis/public-apis)) and create a small react application that:
 
 1. On startup describes the type of a data a user will receive, along with a button, which when clicked calls to the api, and displays the data on screen, replacing the description text with a table or list type view.
 ![landing](https://github.com/TwirlingGoddess/Makeup-Maniac/blob/master/main.png "landing")
